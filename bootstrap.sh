@@ -13,7 +13,8 @@ then
   sudo yum install -y docker-ce docker-ce-cli containerd.io
   sudo systemctl start docker
   sudo systemctl enable docker
-  sudo usermod -aG docker $USER
+  #As this bootstrap.sh will be executed as root
+  sudo usermod -aG docker vagrant
 fi
 
 # Install kind
