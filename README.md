@@ -1,9 +1,9 @@
 # cn-environment
 Vagrant config for local Cloud Native Environment
 
-## Kind
+## [Kind](https://github.com/kubernetes-sigs/kind)
 
-Emulate k8s on docker with [kind](https://github.com/kubernetes-sigs/kind)  
+Emulate k8s on docker with kind  
 
 To create a cluster:  
 
@@ -13,15 +13,18 @@ In case you already have more clusters at kubectl config
 
 kubectl cluster-info --context k8s-local  
 
-## NSM
+## [NSM](https://networkservicemesh.io/)
 
-Testing [NSM](https://networkservicemesh.io/)
+Testing NSM
 
 In case helm install throws an error like: [no available release name found](https://github.com/helm/helm/issues/3055)
 
-Add tiller service account:
-´´´
+Add tiller service account:  
+  
+```
 kubectl create serviceaccount --namespace kube-system tiller
 kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
 kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 ```
+
+
